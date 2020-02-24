@@ -1,0 +1,110 @@
+/* css personalizado */
+
+body {
+    padding-top: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.linhaCinza {
+    background: gray;
+}
+
+.linhaPersonalizada {
+    background: #F55;
+    color:white;
+    border-color:0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 2px;
+}
+
+.bg-color-padding p {
+    padding: 5px;
+}
+
+.page-header {
+    border-bottom: none;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    margin: 5px 0 5px;
+
+}
+
+.jumbotron {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-bottom: 3px;
+  color: inherit;
+  background-color: #eee;
+  border: 1px solid red;
+}
+
+.jumbotron p {
+  margin-bottom: 5px;
+  margin-bottom: 3px;
+  padding-left: 3px;
+  font-size: 16px;
+  font-weight: 160;
+  color:#C60;
+}
+
+.jumbotron .p textoValor {
+  font-size: 20px;
+  font-weight: bold;
+  color:#C60;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+
+}
+
+.jumbotron badge {
+  display: inline-block;
+  min-width: 18px;
+  padding: 3px 7px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  color: #F30;
+  text-align: center;
+  horizontal-align: middle;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #FF0;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .container .jumbotron,
+  .container-fluid .jumbotron {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 40px;
+  }
+}
+
+badge2 {
+  display: inline-block;
+  min-width: 14px;
+  padding: 3px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  color: #F30;
+  text-align: center;
+  horizontal-align: middle;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #FF0;
+  border-radius: 10px;
+}

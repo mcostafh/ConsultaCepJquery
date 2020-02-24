@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <title>Consulta CEP</title>
+	  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" >	
+
+	
+	<!-- css jquery -->
+    <link rel="stylesheet" href="Frameworks/jQuery-UI-1-12/jquery-ui.css">
+    <link rel="stylesheet" href="Frameworks/jQuery-UI-1-12/jquery-ui.theme.css">
+	
+	<!--  bootstrap -->
+    
+	<link rel="stylesheet" href="Frameworks/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="Frameworks/bootstrap/bootstrap-theme.css">
+	
+	<!-- script jquery -->
+    <script src="frameworks/jQuery-UI-1-12/External/jquery/jquery.js"></script>	
+	
+    <script src="Frameworks/jQuery-UI-1-12/jquery-ui.js"></script>	
+    
+      
+
+	<script language="javascript" type="text/javascript">
+	
+        //https://viacep.com.br/
+        function resetForm(){
+            $("#logradouro").val('');
+            $("#complemento").val('');
+            $("#bairro").val('');
+            $("#localidade").val('');
+            $("#uf").val('');                        
+            $("#ibge").val('');                        
+            $('#endereco' ).hide()
+                        
+        }
+        
+            function login(){
+            
+                var cep = $("#cep").val().replace(/\D/g, '');
+            
+		      $.ajax({
+                url: "https://viacep.com.br/ws/"+cep+"/json/",
+                type: "GET",
+				success: function  (_json) {
+					
+                    if (("erro" in _json)) {
+                        $("#st_alerta").val("Não localizado");
+                        $("#erro").show();
+                    }else{
+                        $("#logradouro").val(_json.logradouro);
+                        $("#complemento").val(_json.complemento);
+                        $("#bairro").val(_json.bairro);
+                        $("#localidade").val(_json.localidade);
+                        $("#uf").val(_json.uf);                        
+                        $("#ibge").val(_json.ibge);                        
+                        $('#endereco' ).show()
+                        
+                    }
+                    
+						
+                }, error: function (request, status, erro) {
+                   alert("Não foi possível localizar o CEP " );
+                }
+            	
+			 });
+
+            };	
+
+        
+        $(document).ready(function () {
+
+			//$('#endereco' ).show()
+
+    
+        });
+
+	</script>
+	
+</head>
+<body>	
+
+    <div class="container">
+        <div class="col-md-10 col-sm-8"></div>
+        <div class="col-md-10 col-sm-8">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pesquisar pelo CEP</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form-horizontal">
+                        <fieldset>
+                            <div class="row">    
+                                
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control"  placeholder="informe o CEP" id="cep" type="text" autofocus="" onchange="resetForm()" onclick="resetForm()">
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        <a href="javascript:;" class="btn btn-sm btn-success" onclick="login()">Pesquisar</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div id="endereco"  style="display:none" class="form-horizontal">
+                            
+                                <div class="row">
+                                    <label for="nome" class="col-md-2 control-label">Logradouro:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="Logradouro" id="logradouro" type="text" value="">
+                                    </div>
+                                </div>
+                                
+                                <div class="row"> 
+                                    <label for="nome" class="col-md-2 control-label">Complemento:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="complemento" id="complemento" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <label for="nome" class="col-md-2 control-label">Bairro:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="bairro" id="bairro" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <label for="nome" class="col-md-2 control-label">Localidade:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="localidade" id="localidade" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <label for="nome" class="col-md-2 control-label">Uf:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="uf" id="uf" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <label for="nome" class="col-md-2 control-label">Cód. IBGE:</label>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <input class="form-control" placeholder="ibge" id="ibge" type="text" value="">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4"></div>
+    </div>
+
+
+
+</body>
+	
+</html>
+
